@@ -1,0 +1,31 @@
+<div class="container topRol">
+    <app-navbar></app-navbar>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 topRol box">
+            <div>
+                <h1>Rick and Morty App</h1>
+            </div>
+            <div>
+                <img src="../../../assets/img/rickMorty.jpg" alt="">
+            </div>
+        </div>
+
+        <div class="col-md-8 topRol">
+            <h3>Noticias</h3>
+            <p>Rick y Morty, la exitosa serie animada de ciencia ficción de Adult Swim, regresa con cinco nuevos episodios. En España se estrenarán el 4 de mayo, tan sólo un día después de su lanzamiento en Estados Unidos y se podrán ver en TNT, tanto en
+                el canal de televisión lineal como en los servicios de vídeo bajo demanda, y también en la plataforma HBO España, ambos pertenecientes al grupo WarnerMedia. Antes de suscribirte, lee aquí nuestra política de privacidad y aviso legal. Estos
+                cinco capítulos inéditos completan la cuarta temporada de la creación de Dan Harmon y Justin Roiland, que en sus episodios iniciales han hecho que los espectadores se embarquen en una aventura postapocalíptica tipo Akira, conozcan el santuario
+                secreto de Rick, planeen un gran golpe con mil giros de guion, se sientan madre de dragones o salven el planeta de una amenaza serpentina. Todo es posible en el imprevisible universo de los dos protagonistas.
+            </p>
+
+            <div *ngIf="ListCharacter.length > 0" class="row">
+                <div class="col-lg-6 cors" *ngFor="let character of ListCharacter">
+                    <app-character [character]="character"></app-character>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,21 @@
+.topRol {
+    margin-top: 20px;
+    ;
+}
+
+.box img {
+    width: 100%;
+    height: 60%;
+}
+
+@supports(object-fit: cover) {
+    .box img {
+        height: 90%;
+        object-fit: cover;
+        object-position: center center;
+    }
+}
+
+.cors {
+    width: auto;
+}
