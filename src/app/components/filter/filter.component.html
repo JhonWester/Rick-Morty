@@ -1,0 +1,31 @@
+<div>
+    <h1 class="text-center" *ngIf="name !== ''; else search">Filtro de Personajes</h1>
+    <ng-template #search>
+        <h1 class="text-center">Personajes</h1>
+        <nav aria-label="Page navigation example">
+            <ul class="pagination">
+                <li class="page-item"><a class="page-link" *ngIf="currentPage > 1" (click)="loadPage(currentPage - 1)">Previous</a></li>
+                <li class="page-item"><a class="page-link" (click)="loadPage(currentPage + 1)">{{currentPage + 1}}</a></li>
+                <li class="page-item"><a class="page-link" (click)="loadPage(currentPage + 2)">{{currentPage + 2}}</a></li>
+                <li class="page-item"><a class="page-link" (click)="loadPage(currentPage + 3)">{{currentPage + 3}}</a></li>
+                <li class="page-item"><a class="page-link" *ngIf="nextPage" (click)="loadPage(currentPage + 1)">Next</a></li>
+            </ul>
+        </nav>
+    </ng-template>
+
+    <div class="container save">
+        <div class="row d-flex justify-content-center" *ngIf="!loading; else lazyload">
+            <div *ngFor="let character of filter.results">
+                <app-character [character]="character"></app-character>
+            </div>
+        </div>
+
+        <ng-template #lazyload>
+            <div class="text-center">
+                <div class="spinner-border" role="status">
+                    <span class="sr-only">Loading...</span>
+                </div>
+            </div>
+        </ng-template>
+    </div>
+</div>

@@ -12,11 +12,12 @@ export class HomeComponent implements OnInit {
   ListCharacter: Array<Character>;
   max: number;
   min: number;
+  loading: boolean;
 
   constructor(private apiService: RickMortyService) { }
 
   ngOnInit() {
-    this.ListCharacter = [];
+    this.loading = true;
     this.max = 591;
     this.min = 1;
     this.getCharacters();
@@ -34,10 +35,12 @@ export class HomeComponent implements OnInit {
   getCharacters() {
     this.apiService.getSomeCharacter(this.generateNumber()).subscribe(response => {
       this.ListCharacter = response;
-      console.log(this.ListCharacter);
     },
-     error => console.error(error)
-    );
+     error => console.error(error),
+     () => {
+       if (this.ListCharacter) {
+         this.loading = false;
+       }
+     });
   }
-
 }
