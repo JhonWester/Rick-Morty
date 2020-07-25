@@ -12,7 +12,7 @@
         <img [src]="character.image" class="card-img-top" alt="...">
         <div class="card-body">
             <h5 class="card-title">{{character.name}}</h5>
-            <a href="#" class="card-link">Personaje</a>
+            <a class="card-link" [routerLink]="['/detail', id]">Detalles</a>
             <a href="#" class="card-link">Localizacion</a>
         </div>
     </div>
