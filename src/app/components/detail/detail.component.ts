@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { RickMortyService } from '../../services/rick-morty.service';
 import { Character } from '../../model/character';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-detail',
@@ -13,7 +14,7 @@ export class DetailComponent implements OnInit {
   loading: boolean;
   character: Character;
   id: number;
-  constructor(private routes: ActivatedRoute, private apiServices: RickMortyService, private router: Router) { }
+  constructor(private routes: ActivatedRoute, private apiServices: RickMortyService, private site: Location) { }
 
   ngOnInit() {
     this.loading = true;
@@ -43,7 +44,7 @@ export class DetailComponent implements OnInit {
   }
 
   backCharacter(): void {
-    this.router.navigate(['/filter']);
+    this.site.back();
   }
 
 }

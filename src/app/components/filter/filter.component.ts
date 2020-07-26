@@ -3,6 +3,7 @@ import { RickMortyService } from '../../services/rick-morty.service';
 import { ActivatedRoute } from '@angular/router';
 import { Filter } from '../../model/filter';
 import { Info } from '../../model/info';
+import { ChangePageService } from '../../services/change-page.service';
 
 @Component({
   selector: 'app-filter',
@@ -17,7 +18,7 @@ export class FilterComponent implements OnInit {
   currentPage: number;
   nextPage: number;
 
-  constructor(private apiService: RickMortyService, private route: ActivatedRoute) { }
+  constructor(private apiService: RickMortyService, private route: ActivatedRoute, private pageService: ChangePageService) { }
 
   ngOnInit() {
     this.currentPage = 1;
@@ -60,13 +61,8 @@ export class FilterComponent implements OnInit {
   }
 
   changePage(info: Info) {
-    if (info.next !== null) {
-      const chain = info.next.split('=');
-      this.currentPage = Number(chain[1]) - 1;
-      this.nextPage = this.currentPage + 1;
-    } else {
-      this.nextPage = null;
-    }
+    this.nextPage = this.pageService.changePage(info);
+    this.currentPage = this.nextPage - 1;
   }
 
   setLoading(): void {

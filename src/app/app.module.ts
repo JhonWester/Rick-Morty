@@ -12,6 +12,9 @@ import { FormsModule } from '@angular/forms';
 import { appRoutes } from './routes/app.routing';
 import { FilterComponent } from './components/filter/filter.component';
 import { DetailComponent } from './components/detail/detail.component';
+import { LocalizationsComponent } from './components/localizations/localizations.component';
+import { LocalizationDetailComponent } from './components/localization-detail/localization-detail.component';
+import { LocalizationsGlobalComponent } from './components/localizations-global/localizations-global.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +24,10 @@ import { DetailComponent } from './components/detail/detail.component';
     LocationComponent,
     CharacterComponent,
     FilterComponent,
-    DetailComponent
+    DetailComponent,
+    LocalizationsComponent,
+    LocalizationDetailComponent,
+    LocalizationsGlobalComponent
   ],
   imports: [
     BrowserModule,

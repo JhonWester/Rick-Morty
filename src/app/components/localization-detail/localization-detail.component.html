@@ -1,0 +1,48 @@
+<div class="container topRol">
+    <div class="text-center">
+        <h3>Detalle Localización</h3>
+    </div>
+    <div class="top-rol">
+        <button type="button" class="btn btn-info" (click)="back()">Volver</button>
+    </div>
+    <div class="row topRol">
+        <div class="col-md-4">
+            <div *ngIf="localization" class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Nombre</h5>
+                    <p class="card-text">{{localization.name}}</p>
+                    <h5 class="card-title">Dimension</h5>
+                    <p class="card-text">{{localization.dimension}}</p>
+                    <h5 class="card-title">Tipo de localización</h5>
+                    <p class="card-text">{{localization.type}}</p>
+                    <h5 class="card-title">Creación</h5>
+                    <p class="card-text">{{localization.created | date}}</p>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="!loading; else load" class="col-md-8">
+            <div *ngIf="listCharacter; else notContent">
+                <div class="row">
+                    <div class="col-lg-6 cors" *ngFor="let character of listCharacter">
+                        <app-character [character]="character"></app-character>
+                    </div>
+                </div>
+            </div>
+
+            <ng-template #notContent>
+                <div class="alert alert-danger" role="alert">
+                    <h4 class="alert-heading">Uppss Lo sentimos!!!</h4>
+                    <p>No se encontraron resultados de personajes que aparecen en este sitio</p>
+                    <hr>
+                    <p class="mb-0">Por favor seleccione otro lugar</p>
+                </div>
+            </ng-template>
+        </div>
+
+        <ng-template #load class="d-flex justify-content-center">
+            <div class="spinner-grow text-info" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </ng-template>
+    </div>
+</div>
