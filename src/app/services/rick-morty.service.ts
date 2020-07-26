@@ -13,26 +13,26 @@ export class RickMortyService {
   url: string;
 
   constructor(private http: HttpClient) {
-    this.url = environment.API_ENDPOINT;
+    this.url = environment.API_ENDPOINT + 'character/';
    }
 
    getListCharacter() {
-     return this.http.get<Filter>(this.url + 'character');
+     return this.http.get<Filter>(this.url);
    }
 
    getSomeCharacter(numbers: string): Observable<Character[]> {
-     return this.http.get<Character[]>(this.url + `character/${numbers}`);
+     return this.http.get<Character[]>(this.url + numbers);
    }
 
    getByName(name: string): Observable<Filter> {
-      return this.http.get<Filter>(this.url + `character/?name=${name}`);
+      return this.http.get<Filter>(this.url + `?name=${name}`);
    }
 
    nextPage(num: number) {
-    return this.http.get<Filter>(this.url + `character/?page=${num}`);
+    return this.http.get<Filter>(this.url + `?page=${num}`);
    }
 
    getCharacter(id: number): Observable<Character> {
-     return this.http.get<Character>(this.url + `character/${id}`);
+     return this.http.get<Character>(this.url + id);
    }
 }
